@@ -32,10 +32,7 @@
   }
   h1 { font-size: 34px; margin: 0 0 8px; color: var(--ink); }
   .updated { color: var(--ink-secondary); font-size: 14px; }
-  h2 {
-    font-size: 21px; margin: 40px 0 14px; color: var(--ink);
-    border-bottom: 2px solid var(--border); padding-bottom: 8px;
-  }
+  h2 { font-size: 21px; margin: 40px 0 14px; color: var(--ink); border-bottom: 2px solid var(--border); padding-bottom: 8px; }
   h3 { font-size: 16px; margin: 22px 0 8px; color: var(--rose-dark); }
   p, li { font-size: 15.5px; color: var(--ink); }
   ul { padding-left: 22px; }
@@ -43,10 +40,8 @@
   a { color: var(--rose-dark); text-decoration: none; border-bottom: 1px solid var(--rose); }
   a:hover { color: var(--rose); }
   .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; margin: 18px 0; }
-  .contact-box {
-    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
-    color: #fff; border-radius: 16px; padding: 24px 26px; margin-top: 36px;
-  }
+  .warn { background: #FEF3F2; border: 1px solid #FECDD3; border-radius: 14px; padding: 16px 20px; margin: 18px 0; font-size: 14.5px; }
+  .contact-box { background: linear-gradient(135deg, var(--rose), var(--rose-dark)); color: #fff; border-radius: 16px; padding: 24px 26px; margin-top: 36px; }
   .contact-box h2 { color: #fff; border-bottom: none; margin-top: 0; }
   .contact-box a { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.5); }
   table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14.5px; }
@@ -61,10 +56,10 @@
   <header>
     <span class="badge">Privacy Policy</span>
     <h1>Glow Up Diary — Privacy Policy</h1>
-    <div class="updated">Last updated: June 18, 2026</div>
+    <div class="updated">Last updated: June 26, 2026</div>
   </header>
 
-  <p>Glow Up Diary (the "App") is developed and published by Abdul Ahad, operating as <strong>Undercover Mysteries</strong> ("we," "us," or "our"), based in Pakistan. This policy explains what information the App collects, how it's used, who it's shared with, and the choices you have. By using the App, you agree to the practices described here.</p>
+  <p>Glow Up Diary (the "App") is developed and published by Abdul Ahad, operating as <strong>Undercover Mysteries</strong> ("we," "us," or "our"), based in Pakistan. This policy explains what information the App collects, how it is used, who it is shared with, and the choices you have. By using the App, you agree to the practices described here.</p>
 
   <h2>1. Information We Collect</h2>
 
@@ -79,14 +74,14 @@
 
   <h3>1.2 Your selfie photos</h3>
   <div class="card">
-    <p><strong>Your daily selfie photos are stored only on your device.</strong> They are never uploaded to our servers, Firebase, or any third party. Deleting the App or your account removes these files from your device.</p>
+    <p><strong>Your selfie photos are uploaded to Cloudinary</strong>, a third-party cloud media storage service, so that they are accessible across all your devices. Photos are stored in a private folder tied to your account identifier and are not publicly accessible. Cloudinary's privacy practices are described at <a href="https://cloudinary.com/privacy" target="_blank">cloudinary.com/privacy</a>.</p>
   </div>
 
   <h3>1.3 Selfie metadata stored in our database</h3>
-  <p>To track your progress through your 90-day challenge, the following information about each selfie <em>is</em> stored in our cloud database (Cloud Firestore, a Google service), tied to your account:</p>
+  <p>In addition to the photo files themselves, the following information about each selfie is stored in our cloud database (Cloud Firestore, a Google service), tied to your account:</p>
   <ul>
     <li>The date and day number of each selfie you take</li>
-    <li>An on-device file reference for that selfie — not the photo itself</li>
+    <li>A reference URL pointing to the photo stored on Cloudinary</li>
     <li>Your subscription/Pro status and the date your 90-day challenge started</li>
   </ul>
 
@@ -94,60 +89,69 @@
   <p>If you purchase a Pro subscription, the transaction itself is processed entirely by Apple's App Store or Google Play — we never see or store your payment card details. To manage entitlements, we use RevenueCat, a third-party subscription management service, which receives your app-assigned user ID and your purchase/subscription history. RevenueCat's own privacy practices are described at <a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a>.</p>
 
   <h3>1.5 Advertising</h3>
-  <p>Free-tier use of the App includes ads served by Google AdMob. When an ad is shown, Google's AdMob SDK may collect your device's advertising identifier and ad interaction data, in accordance with Google's own privacy policy. We do not control what Google collects through this SDK beyond what we configure. You can read Google's practices at <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a> and, specifically for how Google uses data from apps using its services, at <a href="https://www.google.com/policies/privacy/partners/" target="_blank">google.com/policies/privacy/partners</a>.</p>
+  <p>Free-tier use of the App includes ads served by Google AdMob. When an ad is shown, Google's AdMob SDK may collect your device's advertising identifier and ad interaction data, in accordance with Google's own privacy policy. You can read Google's practices at <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>.</p>
 
-  <h3>1.6 Information that never leaves your device</h3>
-  <p>Your selfie photo files, your light/dark theme preference, and your daily reminder time and on/off setting are all stored locally on your device only, using local storage mechanisms. Daily reminders are scheduled and delivered entirely on-device — no notification content is ever sent through a remote server.</p>
+  <h3>1.6 Information stored only on your device</h3>
+  <p>Your light/dark theme preference and your daily reminder time and on/off setting are stored locally on your device only. Daily reminders are scheduled and delivered entirely on-device — no notification content is ever sent through a remote server.</p>
 
   <h2>2. How We Use Your Information</h2>
   <ul>
-    <li>To create and maintain your account, and let you sign in across sessions</li>
-    <li>To save and sync your selfie metadata so your progress is preserved across sessions and devices</li>
+    <li>To create and maintain your account, and let you sign in across sessions and devices</li>
+    <li>To store and display your selfie photos and track your 90-day progress</li>
     <li>To verify and manage your Pro subscription status</li>
     <li>To show ads to free-tier users, and to measure ad performance</li>
     <li>To respond to support requests sent to our contact email</li>
     <li>To maintain the security and reliability of the App</li>
   </ul>
-  <p>We do not sell your personal information, and we do not use your selfie metadata for advertising targeting.</p>
+  <p>We do not sell your personal information, and we do not use your photos or selfie metadata for advertising targeting.</p>
 
   <h2>3. Third-Party Services</h2>
   <p>The App relies on the following third-party services, each of which processes a defined slice of your data under their own privacy practices:</p>
   <table>
     <tr><th>Service</th><th>Purpose</th><th>Data involved</th></tr>
-    <tr><td>Firebase Authentication (Google)</td><td>Account sign-in</td><td>Email, password (handled by Firebase, not us directly)</td></tr>
-    <tr><td>Cloud Firestore (Google)</td><td>App data storage</td><td>Profile info, selfie metadata</td></tr>
+    <tr><td>Firebase Authentication (Google)</td><td>Account sign-in</td><td>Email, password (handled by Firebase)</td></tr>
+    <tr><td>Cloud Firestore (Google)</td><td>App data storage</td><td>Profile info, selfie metadata, reference URLs</td></tr>
     <tr><td>Google Sign-In</td><td>Optional sign-in method</td><td>Name, email, profile photo URL</td></tr>
+    <tr><td>Cloudinary</td><td>Photo storage and delivery</td><td>Selfie photo files</td></tr>
     <tr><td>Google AdMob</td><td>Advertising (free tier)</td><td>Advertising ID, ad interaction data</td></tr>
     <tr><td>RevenueCat</td><td>Subscription management</td><td>User ID, purchase/subscription history</td></tr>
   </table>
 
-  <h2>4. Data Retention</h2>
-  <p>We retain your account and app data for as long as your account exists. If you delete your account from within the App, your account record and selfie metadata are permanently deleted from our database, and your locally stored photo files are deleted from your device. This action cannot be undone.</p>
+  <h2>4. Data Retention and Deletion</h2>
+  <p>We retain your account and app data for as long as your account exists. When you delete your account from within the App:</p>
+  <ul>
+    <li>Your account record and selfie metadata are <strong>permanently and immediately deleted</strong> from our Firestore database</li>
+    <li>Your Firebase Authentication account is <strong>permanently deleted</strong></li>
+    <li>Your selfie photo files stored on Cloudinary are <strong>scheduled for deletion</strong> — because securely deleting files from Cloudinary requires a server-side operation, this may not happen instantly at the moment of account deletion. If you would like to confirm your photo files have been removed, please contact us at the email below and we will process the deletion manually within 30 days</li>
+  </ul>
+  <div class="warn">
+    Account deletion cannot be undone. If you need to confirm that all your Cloudinary photo files have been permanently deleted, please email us directly.
+  </div>
 
   <h2>5. Your Rights and Choices</h2>
-  <p>Depending on where you live, you may have rights including the ability to access, correct, export, or delete your personal information, and to object to or restrict certain processing. You can exercise most of these directly in the App (editing your name, deleting individual selfies, or deleting your account entirely), or by contacting us using the details below.</p>
-  <p>If you are in the European Economic Area or UK, you have rights under the General Data Protection Regulation (GDPR). If you are a California resident, you have rights under the California Consumer Privacy Act (CCPA/CPRA), including the right to know what's collected and to request deletion. We do not sell personal information as defined under CCPA.</p>
+  <p>Depending on where you live, you may have rights including the ability to access, correct, export, or delete your personal information. You can exercise most of these directly in the App, or by contacting us using the details below.</p>
+  <p>If you are in the European Economic Area or UK, you have rights under the GDPR. If you are a California resident, you have rights under the CCPA/CPRA, including the right to know what is collected and to request deletion. We do not sell personal information as defined under CCPA.</p>
 
   <h2>6. International Data Transfers</h2>
-  <p>Our infrastructure providers (Google/Firebase) may process and store data on servers located outside your home country. By using the App, you understand your information may be transferred to and processed in countries with different data protection laws than your own.</p>
+  <p>Our infrastructure providers (Google/Firebase and Cloudinary) may process and store data on servers located outside your home country. By using the App, you understand your information may be transferred to and processed in countries with different data protection laws than your own.</p>
 
   <h2>7. Children's Privacy</h2>
   <p>The App is not directed at children under 13, and we do not knowingly collect personal information from anyone under 13. If you believe a child has provided us with personal information, please contact us and we will delete it.</p>
 
   <h2>8. Security</h2>
-  <p>We rely on Firebase's built-in security infrastructure (including authentication and database access rules) to protect your data. No method of electronic storage or transmission is 100% secure, and we cannot guarantee absolute security.</p>
+  <p>We rely on Firebase's and Cloudinary's built-in security infrastructure to protect your data. Photos are stored in private, access-controlled folders on Cloudinary. No method of electronic storage or transmission is 100% secure, and we cannot guarantee absolute security.</p>
 
   <h2>9. Changes to This Policy</h2>
   <p>We may update this policy from time to time. Material changes will be reflected by updating the "Last updated" date above. Continued use of the App after changes take effect constitutes acceptance of the revised policy.</p>
 
   <div class="contact-box">
     <h2>Contact Us</h2>
-    <p>For any questions about this Privacy Policy or your data, contact:</p>
+    <p>For any questions about this Privacy Policy, your data, or to request deletion of your Cloudinary photo files, contact:</p>
     <p><strong>Abdul Ahad</strong> (Undercover Mysteries)<br>
     Email: <a href="mailto:undercovermysteries0@gmail.com">undercovermysteries0@gmail.com</a></p>
   </div>
 
-  <footer>Glow Up Diary · Privacy Policy · Last updated June 18, 2026</footer>
+  <footer>Glow Up Diary · Privacy Policy · Last updated June 26, 2026</footer>
 
 </div>
 </body>
